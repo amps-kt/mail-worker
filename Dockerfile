@@ -8,9 +8,7 @@ COPY pnpm-lock.yaml .
 RUN corepack enable pnpm
 RUN pnpm i --frozen-lockfile
 
-COPY eslint.config.mjs .
-COPY next.config.js .
-COPY postcss.config.cjs .
+# COPY eslint.config.mjs .
 COPY tsconfig.json .
 
 COPY src src
@@ -19,6 +17,7 @@ RUN pnpm run build
 
 #  Runner:
 FROM node:22-alpine AS runner
+LABEL org.opencontainers.image.source="https://github.com/amps-kt/mail-worker"
 WORKDIR /app
 
 RUN corepack enable pnpm
