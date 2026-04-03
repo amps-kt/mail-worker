@@ -3,9 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "tc": "tsc --noEmit",
+    "build": "tsc"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.25.0"
+  "packageManager": "pnpm@10.25.0",
+  "dependencies": {
+    "@t3-oss/env-core": "^0.13.11",
+    "bullmq": "^5.73.0",
+    "ioredis": "^5.10.1",
+    "nodemailer": "^8.0.4",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "typescript": "5.8.2",
+    "@types/nodemailer": "^7.0.11"
+  }
 }
