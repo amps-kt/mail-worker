@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "tc": "tsc",
+    "lint": "eslint",
     "build": "tsup src/main.ts --format cjs --platform node --out-dir build",
     "start": "node build/main.cjs"
   },
@@ -24,7 +25,10 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
     "@types/nodemailer": "^7.0.11",
-    "typescript": "5.8.2"
+    "eslint": "9.22.0",
+    "typescript": "5.8.2",
+    "typescript-eslint": "^8.37.0"
   }
 }

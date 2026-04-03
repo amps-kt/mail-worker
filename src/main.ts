@@ -8,7 +8,7 @@ import { mailWorker } from "./worker";
 
 const emailQueue = new Queue<EmailJob>(EMAIL_QUEUE_NAME, { connection });
 
-(async () => {
+void (async () => {
   await emailQueue.setGlobalRateLimit(
     env.MAIL_RATE_LIMIT,
     env.MAIL_RATE_LIMIT_PERIOD_MILLIS,
