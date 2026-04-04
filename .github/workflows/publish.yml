@@ -1,0 +1,39 @@
+name: "Docker build and publish to GHCR"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs: 
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: "Set up Docker Buildx"
+        uses: docker/setup-buildx-action@v3
+        
+      - name: "Get current date"
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: "Login to GitHub Container Registry"
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
+
+      - name: "Build and push app"
+        uses: docker/build-push-action@v5
+        with:
+          file: ./docker/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/spa-kt/mail-worker:${{ github.ref_name }}-latest
+            ghcr.io/spa-kt/mail-worker:${{ github.ref_name }}-${{ steps.date.outputs.date }}
+            ghcr.io/spa-kt/mail-worker:${{ github.ref_name }}-${{ github.sha }}
