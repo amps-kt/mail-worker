@@ -33,6 +33,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/spa-kt/mail-worker:${{ github.ref_name }}-latest
-            ghcr.io/spa-kt/mail-worker:${{ github.ref_name }}-${{ steps.date.outputs.date }}
-            ghcr.io/spa-kt/mail-worker:${{ github.ref_name }}-${{ github.sha }}
+            ghcr.io/amps-kt/mail-worker:${{ github.ref_name }}-latest
+            ghcr.io/amps-kt/mail-worker:${{ github.ref_name }}-${{ steps.date.outputs.date }}
+            ghcr.io/amps-kt/mail-worker:${{ github.ref_name }}-${{ github.sha }}
